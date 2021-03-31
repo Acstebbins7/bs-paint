@@ -31,7 +31,8 @@
   height: 30px;
 }
 
-.current-brush, .palette-color {
+.current-brush,
+.palette-color {
   width: 30px;
   height: 30px;
   border: 1px solid black;
@@ -51,21 +52,16 @@
 }
 
 .color-1 {
-
 }
 
 .color-2 {
-
 }
 
 .color-3 {
-
 }
 
 .color-4 {
-
 }
 
 .color-5 {
-
 }

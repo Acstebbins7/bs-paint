@@ -16,6 +16,16 @@
  * is the first argument to `repeat`, currently set at 10.
  */
 const gridWidth = 10;
+
+const palette = document.querySelectorAll('.palette-color')
+const brush = document.querySelector('.current-brush')
+const canvas = document.querySelector('.canvas')
+canvas.style.height= '350px';
+canvas.style.width = '500px';
+canvas.style.gridTemplateRows= 'repeat(15, 1fr)';
+canvas.style.gridTemplateColumns= 'repeat(17, 1fr)';
+
+
 let count = 0;
 while (count <= gridWidth * gridWidth) {
   const canvas = document.querySelector('.canvas');
@@ -49,11 +59,49 @@ while (count <= gridWidth * gridWidth) {
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
 
+const squares = document.querySelectorAll('.square')
 
+let mouseDown=false
 
 /****************************
  * EVENT LISTENER FUNCTIONS *
 ****************************/
+
+for (const square of squares ){
+  square.addEventListener('click', (event)=>{
+    const px = event.target
+    px.classList= brush.classList
+    px.style.border='0px'
+    px.classList.add('square')
+  })
+}
+
+for (const colors of palette){
+  colors.addEventListener('click', ()=>{
+    brush.classList=colors.classList
+  })
+}
+
+for (const square of squares ){
+  square.addEventListener('mouseenter', (event)=>{
+    if(mouseDown){
+      const px = event.target
+      // px.classList.replace(px.classList, brush.classList)
+      px.classList= brush.classList
+      px.style.border ='0px'
+      px.classList.add('square')
+  }
+})
+}
+
+
+document.body.addEventListener('mousedown', ()=>{
+  mouseDown=true;
+})
+
+document.body.addEventListener('mouseup', ()=>{
+  mouseDown=false;
+})
 
 // Now add some functions to handle clicking one particular square
 // and clicking one particular palette color. You can leave them
